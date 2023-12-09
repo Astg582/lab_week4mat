@@ -16,10 +16,10 @@ int main(){
 int x2(int num){
     int c = 1;
     while(c){
-        if(pow(c, 2) == num){
+        if(pow(2, c) == num){
             return num;
-        }else if(pow(c, 2) > num){
-            return pow(c - 1, 2);
+        }else if(pow(2, c) > num){
+            return pow(2, c - 1);
         }
         ++c;
     }
