@@ -8,9 +8,8 @@ int x2(int);
 int main(){
     int n = 0;
     int x = 0;
-    std::cin >> x;
-
-    std::cout << x2(x) << std::endl;
+    std::cin >> n;
+    std::cout << ln(n) << std::endl;
 }
 
 int x2(int num){
@@ -43,7 +42,7 @@ double ln(double n){
    int e = 1;
    double rec = 0;
    double div = (n - 1) / (n + 1);
-   while(e != 100){
+   while(e != 1000){
         rec += pow(div, (2 * e - 1)) / (2 * e - 1);
         ++e;
    }

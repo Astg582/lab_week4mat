@@ -1,4 +1,4 @@
-#include <iostream>  
+#include <iostream>
 const int s = 3;
 void fill(int arr[][s]);
 void print(int arr[][s]);
@@ -7,6 +7,7 @@ void sum1(int arr[][s], int arr1[][s]);
 void mul1(int arr[][s], int arr1[][s], int arrz[][s]);
 bool mog1(int arr[][s]);
 void tamb(int arr[][s]);
+bool tiv(int, int);
 
 int main(){
     int arr[s][s];
@@ -15,40 +16,57 @@ int main(){
     tamb(arr);
 }
 
+
+bool tiv(int a, int b){
+	if(a < b){
+	std::swap(a, b);
+	}
+	int i = 2;
+	while(i < b){
+		if(a % i == 0 && b % i == 0){
+			return false;
+		}
+		++i;
+	}
+	return true;
+}
+
+
 void tamb(int arr[][s]){
-    for(int i = 0; i < s; ++i){
-        int max_t = INT_MIN;
-        int* index_t = nullptr;
-        int min_s = INT_MAX;
-        int* index_s = nullptr;
+
+	for(int i = 0; i < s; ++i){
+		int max_t = arr[i][s-1];
+		int min_s = arr[i][0];
         for(int j = 0; j < s; ++j){
             if(arr[i][j] > max_t){
                 max_t = arr[i][j];
-                index_t = &arr[i][j];
             }
             if(arr[j][i] < min_s){
                 min_s = arr[j][i];
-                index_s = &arr[i][j];
             }
-        }
-       if(max_t == min_s){
-              std::cout <<  *(index_t) << std::endl;
-       }
-        
-    }
+    	   
+			if(max_t == min_s){
+				std::cout <<  max_t  << " index sun  " << i << "index tox  " << j << std::endl;
+			}
+		}
+	}
 }
 
+
+
 bool mog1(int arr[][s]){
+	int dg = 0;
+	int d0 = 0;
     for(int i = 0; i < s; ++i){
         int tox = 0;
         int sun = 0;
-        int dg = 0;
-        int d0 = 0;
         for(int j = 0; j < s; ++j){
             tox += arr[i][j];
             sun += arr[j][i];
-            dg += arr[j][j];
-            d0 += arr[j][s-1-j];
+			if(i == 0){
+            	dg += arr[j][j];
+            	d0 += arr[j][s-1-j];
+			}
         }
         if(tox != sun || sun != dg || dg != tox || d0 != dg || d0 != sun || d0 != tox){
                 return false;
@@ -57,6 +75,7 @@ bool mog1(int arr[][s]){
     }
     return true;
 }
+
 
 void mul1(int arr[][s], int arr1[][s], int arrz[][s]){    
     for(int i = 0; i < s; ++i){
@@ -90,6 +109,7 @@ bool sim1(int arr[][s]){
    }
     return true;
 }
+
 
 void print(int arr[][s]){
     std::cout << std::endl;
